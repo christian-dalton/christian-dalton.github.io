@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Generic Page - Massively by HTML5 UP</title>
+		<title>Building a Hospital Database and Data Warehouse in SQLServer</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -47,18 +47,80 @@
 						<!-- Post -->
 							<section class="post">
 								<header class="major">
-									<span class="date">April 25, 2017</span>
-									<h1>This is a<br />
-									Generic Page</h1>
-									<p>Three sentence summary overview</p>
+									<h1>Building a Hospital Database and Data Warehouse in SQLServer</h1>
+									<p>Created a Database and Data Warehouse. Filled the Data Warehosue
+										with Stored Procedures, Functions, and Triggers. Used scripts to 
+										test the different functions.
+									</p>
 								</header>
-								<div class="image main"><img src="images/pic01.jpg" alt="" /></div>
-								<p>Description of Project Objective</p>
-								<p>Review of Project Successes</p>
-								<p>What I learned</p>
+								
+								<h3>Project Objective</h3>
+								<p>The purpose of this project was to explore the complexities of recording a patient event
+									for a hospital database. The project does not attempt to build a whole hospital database.
+									This would require more time and a much larger team then myself and two other classmates at
+									Utah Valley University. 
+								</p>
+
+								<h3>Creating the Database</h3>
+								<div class="image main"><img src="images/ERD.jpg" alt="" /></div>
+								<p>Above is the Electronic Relational Database (ERD) we created for our project.
+									After deciding what type of data we wanted to record, our first step as a team
+									was making the ERD. It displays the relationships between the tables and shows how we kept
+									referential integirty. </p>
+								<p>Once the ERD was created we created the tables script and ran it in SQL Server Management Studio.
+									We then went to Mockaroo to generate random data to fill in the database and then ran the script. 
+									Below are two links. The first is the script to create the database, the second is to the script
+									that we created to fill the database.
+								</p>
 								
 								<ul class="actions special">
-									<li><a href="https://www.kaggle.com/christiandalton/notebook361c92687e/edit" class="button">Code Link</a></li>
+									<li><a href="https://github.com/christian-dalton/MockHospitalDatabase/blob/main/create_tables.sql" class="button">Tables Script Link</a></li>
+								</ul>
+								<ul class="actions special">
+									<li><a href="https://github.com/christian-dalton/MockHospitalDatabase/blob/main/fill_tables_script.sql" class="button">Fill Tables Script Link</a></li>
+								</ul>
+
+								<h3>Creating the Data Warehouse</h3>
+								<div class="image main"><img src="images/datawarehouse.png" alt="" /></div>
+								<p>Above is the Star Schema Electronic Diagram we created for our Data Warehouse.
+									The Data Warehouse was chosen to be a star schema because our objective was to
+									record the patient event. The main benefit of using a star shema is that there is
+									single large fact table to store primary measured data. The dimension tables
+									surrounding it were used to store important supporting information.</p>
+								
+								<p>One important point to emphasize is that a database and data warehouse should not
+									be stored in the same database. If I were to be brought onto your team I would keep
+									them seperated. For the purpose of this project and the constraints of the class I 
+									kept them in the same database. 
+								</p>
+								
+								<ul class="actions special">
+									<li><a href="https://github.com/christian-dalton/MockHospitalDatabase/blob/main/create_datawarehouse.sql" class="button">Data Warehouse Script Link</a></li>
+								</ul>
+
+
+								<h3>Stored Procedures, Functions, and Triggers</h3>
+								<div class="image main"><img src="images/TriggerExample.png" alt="" /></div>
+								<p>The Triggers that we created for this project mostly deal with updating the
+									Data Warehouse. This allows it so that when a change is made to the database
+									it will reflect in the non-fact table dimensions. For filling the Facts table a 
+									procedure was used to do incremental updates (adding new rows of data).
+								</p>
+								<p>Procedures were used for a lot of different reasons. One example from this database
+									is we nested a while loop within the stored procedure to create a list of dates From
+									January 1, 2020 to Jnuary 1, 2021. We included elements such as the raw date, day of
+									the week, month of the year, quarter, and year number as part of it. Since it was in 
+									the datawarehouse it also include the getdate() built in function so that the dwDateDim
+									table had a record of when it was done.
+								</p>
+								<p>Functions weren't used as often in this project but one example of it being used was to
+									change admit date to the appropriate date id. This was used in the procedure to fill the 
+									facts table.
+								</p>
+								
+								
+								<ul class="actions special">
+									<li><a href="https://github.com/christian-dalton/MockHospitalDatabase/blob/main/datawarehouse_procedures.sql" class="button">Procedures Script Link</a></li>
 								</ul>
 
 							</section>

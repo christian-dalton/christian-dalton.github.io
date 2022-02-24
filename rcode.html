@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Generic Page - Massively by HTML5 UP</title>
+		<title>What Attributes Cause NFL Wide Recievers to be Targeted</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -47,18 +47,62 @@
 						<!-- Post -->
 							<section class="post">
 								<header class="major">
-									<span class="date">April 25, 2017</span>
-									<h1>This is a<br />
-									Generic Page</h1>
-									<p>Three sentence summary overview</p>
+									<h1>What Attributes Cause NFL Wide Recievers to be Targeted?</h1>
+									<p>Using nflfastR's play-by-play data this project takes an
+										exploratory analysis of relatitonships between reciever targets 
+										and other recorded variables. Then it looks to see if any of the
+										recorded variables are major factors in what causes a player to 
+										be targeted.
+									</p>
 								</header>
-								<div class="image main"><img src="images/pic01.jpg" alt="" /></div>
-								<p>Description of Project Objective</p>
-								<p>Review of Project Successes</p>
-								<p>What I learned</p>
+
+								<h3>Project Objective</h3>
+								<p>What metrics in nflfastR are predictive of a wide receiver on field value? 
+									Or in other words, which metrics recorded in nflfastR’s play-by-play data 
+									can be used to predict the number of targets a wide receiver will get during 
+									an NFL season? </p>
+								<h3>Research Methodology</h3>
+								<p>I converted the nflfastR’s play-by-play data into season totals for all the 
+									players using a foreloop. Then the players were then filtered out by receiving 
+									epa (a metric only recorded for receivers) to isolate that position group. Players
+									with fewer 10% of the teams targets were removed from the dataset to remove noise. 
+									Finally all the data was adjusted to be on a per target basis and normalized to be 
+									between 0-1 so as to not skew the model. </p>
+								<p>All the machine learning models used k-fold cross validation, where the data was split up 
+									into 5 different groups. The data then was rotated in with the formula 4 training, 1 testing. 
+									This was repeated three times in each model, where the average of each model iteration was 
+									taken to get the final results. The models we ran the data through was Linear Regression, 
+									TreeBagging, Bayes GLM, and Neural Network. </p>
+								<p>To determine which model was best we used the root mean square error (RMSE), 
+									mean adjusted error (MAE), and R squared (R^2). The priority on deciding the best model was 
+									first on R squared, then on the mean adjusted error, and finally the mean adjusted error.
+									The best model then was used to predict the number of targets that a receiver should receive 
+									based off its training tuning. The predictions column and the target column were then stored in a 
+									dataframe along with the player id, player name and player season. To evaluate the models, the
+									 absolute value of the difference between the targets and prediction columns were taken and stored 
+									 into a new column. If the value was within plus or minus 7.5 of the actual targets, it was scored 
+									 with a one. Labeling it a success. If it was outside of plus or minus ten it was labeled a failure. 
+									 The model was then given a score based off its total accuracy rate.</p>
+								<h3>Research Findings</h3>
+								<p>The most predictive statistic in determining the success is Receiving Expected Points Added 
+									(Receiving EPA). An individual players EPA is the sum of a players Expected Points (EP). 
+									“EPA is the difference between the EP at the start of a play and the EP at the end of the play” 
+									-advancedfootballanalytics.com. Even when adjusting for total receiving plays where they impacted 
+									value by being targeted (Receiving EPA / Targets) it still accounts for 87.5% of the best model's 
+									R squared (TreeBagging model).</p>
+								<h3>Research Weaknesses and Limitations</h3>
+								<p>Choosing Targets may not necessarily be the best metric in deciding WR value. From a Quarterback or play 
+									calling perspective, targets may indictive of which player the team values over the course of a season. 
+									However, in the analytics community value would be better identified as a metric such as EPA. Using that
+									 as the dependent variable is another way to look at value. In addition, Player Salary would be the teams 
+									 perception of expected value, and would hold another solid case for value in creating a model as it is a 
+									 statement of value, even if it is likely strongly tied to their past performance and free agency market. 
+									 However, Salary was not recorded in nflfastR and for the purpose of this analysis I wanted to keep the 
+									 scope within nflfastR's data.
+									</p>
 								
 								<ul class="actions special">
-									<li><a href="https://www.kaggle.com/christiandalton/notebook361c92687e/edit" class="button">Code Link</a></li>
+									<li><a href="https://www.kaggle.com/christiandalton/nfl-wide-receiver-value-analysis/" class="button">Code Link</a></li>
 								</ul>
 
 							</section>
