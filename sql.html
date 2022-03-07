@@ -47,7 +47,7 @@
 							<section class="post">
 								<header class="major">
 									<h1>Building a Hospital Database and Data Warehouse in SQLServer</h1>
-									<p>Created a Database and Data Warehouse. Filled the Data Warehosue
+									<p>Created a Database and Data Warehouse. Filled the Data Warehouse
 										with Stored Procedures, Functions, and Triggers. Used scripts to 
 										test the different functions.
 									</p>
@@ -65,7 +65,7 @@
 								<p>Above is the Electronic Relational Database (ERD) we created for our project.
 									After deciding what type of data we wanted to record, our first step as a team
 									was making the ERD. It displays the relationships between the tables and shows how we kept
-									referential integirty. </p>
+									referential integrity. </p>
 								<p>Once the ERD was created we created the tables script and ran it in SQL Server Management Studio.
 									We then went to Mockaroo to generate random data to fill in the database and then ran the script. 
 									Below are two links. The first is the script to create the database, the second is to the script
@@ -83,13 +83,13 @@
 								<div class="image main"><img src="images/datawarehouse.png" alt="" /></div>
 								<p>Above is the Star Schema Electronic Diagram we created for our Data Warehouse.
 									The Data Warehouse was chosen to be a star schema because our objective was to
-									record the patient event. The main benefit of using a star shema is that there is
+									record the patient event. The main benefit of using a star schema is that there is
 									single large fact table to store primary measured data. The dimension tables
 									surrounding it were used to store important supporting information.</p>
 								
-								<p>One important point to emphasize is that a database and data warehouse should not
-									be stored in the same database. If I were to be brought onto your team I would keep
-									them seperated. For the purpose of this project and the constraints of the class I 
+								<p>One important point to emphasize is that a database and data warehouse should not be 
+									stored in the same database. If I were to be brought onto your team, I would keep them 
+									separated. However, for the purpose of this project and the constraints of the class I 
 									kept them in the same database. 
 								</p>
 								
@@ -100,16 +100,15 @@
 
 								<h3>Stored Procedures, Functions, and Triggers</h3>
 								<div class="image main"><img src="images/TriggerExample.png" alt="" /></div>
-								<p>The Triggers that we created for this project mostly deal with updating the
-									Data Warehouse. This allows it so that when a change is made to the database
-									it will reflect in the non-fact table dimensions. For filling the Facts table a 
-									procedure was used to do incremental updates (adding new rows of data).
-								</p>
+								<p>The Triggers that we created for this project mostly deal with updating the Data Warehouse. 
+									That way when a change is made to the database it will reflect in the non-fact table dimensions. 
+									For filling the Facts table a procedure was used to do incremental updates (adding new rows of data).</p>
+
 								<p>Procedures were used for a lot of different reasons. One example from this database
 									is we nested a while loop within the stored procedure to create a list of dates From
-									January 1, 2020 to Jnuary 1, 2021. We included elements such as the raw date, day of
+									January 1, 2020, to January 1, 2021. We included elements such as the raw date, day of
 									the week, month of the year, quarter, and year number as part of it. Since it was in 
-									the datawarehouse it also include the getdate() built in function so that the dwDateDim
+									the data warehouse it also include the getdate() built in function so that the dwDateDim
 									table had a record of when it was done.
 								</p>
 								<p>Functions weren't used as often in this project but one example of it being used was to

@@ -47,12 +47,10 @@
 							<section class="post">
 								<header class="major">
 									<h1>What Attributes Cause NFL Wide Recievers to be Targeted?</h1>
-									<p>Using nflfastR's play-by-play data this project takes an
-										exploratory analysis of relatitonships between reciever targets 
-										and other recorded variables. Then it looks to see if any of the
-										recorded variables are major factors in what causes a player to 
-										be targeted.
-									</p>
+									<p>Using nflfastR's play-by-play data this project takes an exploratory analysis 
+										on the relationship between receiver targets and other recorded variables. 
+										Then, if any of the recorded variables are major factors in what causes a 
+										player to be targeted.</p>
 								</header>
 
 								<h3>Project Objective</h3>
@@ -61,12 +59,11 @@
 									can be used to predict the number of targets a wide receiver will get during 
 									an NFL season? </p>
 								<h3>Research Methodology</h3>
-								<p>I converted the nflfastR’s play-by-play data into season totals for all the 
-									players using a foreloop. Then the players were then filtered out by receiving 
-									epa (a metric only recorded for receivers) to isolate that position group. Players
-									with fewer 10% of the teams targets were removed from the dataset to remove noise. 
-									Finally all the data was adjusted to be on a per target basis and normalized to be 
-									between 0-1 so as to not skew the model. </p>
+								<p>I converted the nflfastR’s play-by-play data into season totals for all the players using a 
+									fore loop. Then the players were then filtered out by receiving EPA (a metric only recorded for receivers) 
+									to isolate that position group. Players with fewer 10% of the team’s targets were removed 
+									from the dataset to remove noise. Finally, all the data was adjusted to be on a per target basis 
+									and normalized to be between 0-1 so as to not skew the model. </p>
 								<p>All the machine learning models used k-fold cross validation, where the data was split up 
 									into 5 different groups. The data then was rotated in with the formula 4 training, 1 testing. 
 									This was repeated three times in each model, where the average of each model iteration was 
@@ -77,7 +74,7 @@
 									first on R squared, then on the mean adjusted error, and finally the mean adjusted error.
 									The best model then was used to predict the number of targets that a receiver should receive 
 									based off its training tuning. The predictions column and the target column were then stored in a 
-									dataframe along with the player id, player name and player season. To evaluate the models, the
+									data frame along with the player id, player name and player season. To evaluate the models, the
 									 absolute value of the difference between the targets and prediction columns were taken and stored 
 									 into a new column. If the value was within plus or minus 7.5 of the actual targets, it was scored 
 									 with a one. Labeling it a success. If it was outside of plus or minus ten it was labeled a failure. 
